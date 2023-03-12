@@ -1,0 +1,52 @@
+#!/bin/bash
+set -euo pipefail
+
+# lazy dependency check
+which scanimage > /dev/null
+which pdftk > /dev/null
+
+# https://stackoverflow.com/questions/1527049/how-can-i-join-elements-of-an-array-in-bash
+function join_by {
+  local d=${1-} f=${2-}
+  if shift 2; then
+    printf %s "$f" "${@/#/$d}"
+  fi
+}
+
+#name=$( join_by _ $@ )
+name="${@:-}"
+
+if [ -z "$name" ]; then
+	echo specify name!
+	exit 1
+fi
+
+date=$( date '+%Y-%m-%d_%H:%M:%S' )
+
+
+# raw="$dir/.$date"
+raw=$( mktemp -d )
+consume="$HOME/Documents/scans/consume"
+output="$consume/$name.pdf"
+
+[ -d "$raw" ] || mkdir -p "$raw"
+
+echo "Scanning"
+
+( cd "$raw"; 
+	scanimage --batch --format=tiff --mode Color --source "ADF Duplex"
+)
+
+tiffcp "$raw/"*.tif "$raw/combined.tif"
+
+tiff2pdf -o "$output" "$raw/combined.tif"
+
+rm $raw -rf
+
+echo "Done"
+
+# firefox "$output"
+# grep -v '^\s*$' "$dir/$date.txt" 
+# notify-send "Scan complete"
+# scan_sync really
+# echo "Scan complete"
