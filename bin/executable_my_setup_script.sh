@@ -14,3 +14,9 @@ if ! [ -d ~/local/rofi ]; then
 		./setup.sh
 	)
 fi 
+
+
+if [ -f /etc/debian_version ]; then
+	# enable dark mode in Ubuntu
+	gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+fi
