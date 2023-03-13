@@ -15,6 +15,10 @@ if ! [ -d ~/local/rofi ]; then
 	)
 fi 
 
+# Allow windowed fullscreen with firefox:
+# https://www.reddit.com/r/awesomewm/comments/h7fzna/applications_fullscreen_mode_without_taking_whole/
+# In Firefox, go to about:config and set full-screen-api.ignore-widgets to true.
+
 
 if [ -f /etc/debian_version ]; then
 
