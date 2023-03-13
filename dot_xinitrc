@@ -1,0 +1,5 @@
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
+# export QT_QPA_PLATFORMTHEME=gnome # sync qt look with gtk.  Depends on qgnomeplatform-qt5
+export QT_QPA_PLATFORMTHEME=qt5ct
+exec awesome

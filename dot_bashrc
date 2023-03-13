@@ -1,0 +1,115 @@
+#
+# ~/.bashrc
+#
+
+# Managed by Ansible
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+PATH="$HOME/bin:$PATH:$HOME/.local/bin"
+[ -d $HOME/.toolbox/bin ] && export PATH=$PATH:$HOME/.toolbox/bin
+
+# export GTK_IM_MODULE=ibus
+# export QT4_IM_MODULE=xim
+# export QT_IM_MODULE=xim
+# export XMODIFIERS=@im=ibus
+
+export EDITOR=vim
+
+alias ip='ip -c'
+alias vi='nvim'
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias halt='sudo /sbin/shutdown -h now'
+export LESS='-R --use-color -Dd+r$Du+b'
+alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+which fdfind &> /dev/null && alias fd='fdfind --type f' || alias fd='fd --type f'
+
+LAST_REPO=""
+cd() {
+    builtin cd "$@";
+    git rev-parse 2>/dev/null;
+
+    if [ $? -eq 0 ]; then
+        if [ "$LAST_REPO" != $(basename $(git rev-parse --show-toplevel)) ]; then
+        onefetch
+        LAST_REPO=$(basename $(git rev-parse --show-toplevel))
+        fi
+    fi
+}
+
+export LESS_TERMCAP_mb=$'\E[01;31m' \
+LESS_TERMCAP_md=$'\E[01;38;5;74m' \
+LESS_TERMCAP_me=$'\E[0m' \
+LESS_TERMCAP_se=$'\E[0m' \
+LESS_TERMCAP_so=$'\E[38;5;246m' \
+LESS_TERMCAP_ue=$'\E[0m' \
+LESS_TERMCAP_us=$'\E[04;38;5;146m'
+
+# nf=$HOME/.cache/neofetch
+if [ -n "$PS1" ]; then
+    # [ -f "$nf" ] && /bin/cat "$nf"
+    # nohup neofetch > "$nf" 2> /dev/null &
+    neofetch --config ~/.config/neofetch/config
+fi
+
+
+_n()
+{
+    HOSTNAMES=`ls ~/notes`
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "$HOSTNAMES" -- $cur) )
+}
+complete -F _n n
+
+_ni()
+{
+    HOSTNAMES=`ls ~/notes`
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "$HOSTNAMES" -- $cur) )
+}
+complete -F _ni ni
+
+_nls()
+{
+    HOSTNAMES=`ls ~/notes`
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "$HOSTNAMES" -- $cur) )
+}
+complete -F _nls nls
+
+n() {
+	cat ~/notes/"$*"
+}
+
+ni() {
+	$EDITOR ~/notes/"$*"
+}
+
+nls() {
+	ls -c ~/notes/ | grep "$*"
+}
+
+hist(){
+	echo "$@" | grep -q . && history | grep "$@" || history
+}
+
+eternal() {
+    cat $HOME/.eternal | sed 's/^ *[0-9]* *//' | egrep -v '^(hist |eternal)' | egrep -a $@
+}
+
+mkdir -p /tmp/averdow/.downloads &> /dev/null
+[ -L "$HOME/tmp" ] || ln -s /tmp/averdow $HOME/tmp
+[ -e "$HOME/Downloads" ] || ln -s $HOME/tmp/.downloads $HOME/Downloads # Downloads must be manually removed to get setup
+
+HISTFILESIZE=1000000
+HISTSIZE=1000000
+
+export HISTTIMEFORMAT=""
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'history 1 >> ~/.eternal'
+
+# BEGIN_KITTY_SHELL_INTEGRATION
+if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
+# END_KITTY_SHELL_INTEGRATION
+
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
