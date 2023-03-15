@@ -13,6 +13,13 @@ if ! [ -d ~/local/rofi ]; then
 		chmod +x setup.sh
 		./setup.sh
 	)
+
+	# https://github.com/o2sh/onefetch/wiki/Installation#ubuntu-ppa
+	if ! command -v onefetch; then
+		sudo add-apt-repository ppa:o2sh/onefetch
+		sudo apt-get update
+		sudo apt-get install onefetch
+	fi
 fi 
 
 # Allow windowed fullscreen with firefox:
