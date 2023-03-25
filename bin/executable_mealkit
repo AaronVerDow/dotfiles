@@ -37,6 +37,12 @@ echo "Scanning"
 	scanimage --batch --format=tiff --mode Color --source "ADF Duplex"
 )
 
+# rotate first page for hello fresh
+if [ -f "$raw/out1.tif" ]; then
+	convert "$raw/out1.tif" -rotate 270 "$raw/rotated.tif"
+	mv "$raw/rotated.tif" "$raw/out1.tif"
+fi
+
 tiffcp "$raw/"*.tif "$raw/combined.tif"
 
 tiff2pdf -o "$output" "$raw/combined.tif"
