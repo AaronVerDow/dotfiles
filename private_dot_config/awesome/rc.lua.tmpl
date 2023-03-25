@@ -374,11 +374,7 @@ globalkeys = gears.table.join(
                       exe_callback = function (s) awful.tag.selected().name = s end,
                   }
             end,
-            {description = "rename tag", group = "awesome"}),
-    -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
-
+            {description = "rename tag", group = "awesome"})
 )
 
 clientkeys = gears.table.join(
