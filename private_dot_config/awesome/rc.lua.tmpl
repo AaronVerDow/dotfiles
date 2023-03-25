@@ -350,6 +350,8 @@ globalkeys = gears.table.join(
     -- awful.key({ modkey },            "r",     function () awful.util.spawn("rofi showrofi -modi drun,run,window -show drun") end,
     awful.key({ modkey },            "r",     function () awful.util.spawn(" rofi -show drun -theme ~/.config/rofi/launchers/type-1/style-5.rasi") end,
               {description = "run prompt", group = "launcher"}),
+    awful.key({ modkey },            "p",     function () awful.util.spawn(" rofi -show run -theme ~/.config/rofi/launchers/type-1/style-5.rasi") end,
+              {description = "run shell prompt", group = "launcher"}),
 
     awful.key({ modkey },            "b",     function () awful.util.spawn("firefox") end,
               {description = "firefox", group = "launcher"}),
