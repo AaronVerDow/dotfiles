@@ -120,6 +120,8 @@ alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
 alias ........='cd ../../../../../../..'
 alias .........='cd ../../../../../../../..'
+alias ccat=$( which cat )
+alias cat=vimcat
 
 function cd {
     builtin cd "$@" && ls
