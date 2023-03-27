@@ -60,6 +60,8 @@ end
 -- <<< Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+-- makes it smaller but icon is clipped and no text is visible
+-- beautiful.notification_max_width = 100 
 
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"
