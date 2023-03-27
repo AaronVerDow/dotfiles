@@ -27,6 +27,11 @@ fi
 # In Firefox, go to about:config and set full-screen-api.ignore-widgets to true.
 
 
+# Pulseaudio remember bluetooth headset profile
+# https://askubuntu.com/questions/1248886/how-to-set-default-profile-for-bluetooth-headset 
+# load-module module-card-restore restore_bluetooth_profile=true
+
+
 if [ -f /etc/debian_version ]; then
 
 	# enable dark mode in Ubuntu
