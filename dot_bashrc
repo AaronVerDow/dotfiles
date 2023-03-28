@@ -120,8 +120,11 @@ alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
 alias ........='cd ../../../../../../..'
 alias .........='cd ../../../../../../../..'
-alias ccat=$( which cat )
-alias cat=vimcat
+
+if command -v vimcat &> /dev/null; then
+	alias ccat=$( which cat )
+	alias cat=vimcat
+fi
 
 function cd {
     builtin cd "$@" && ls
