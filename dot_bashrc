@@ -120,11 +120,18 @@ alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
 alias ........='cd ../../../../../../..'
 alias .........='cd ../../../../../../../..'
-alias ccat=$( which cat )
-alias cat=vimcat
+
+if command -v vimcat &> /dev/null; then
+	alias ccat=$( which cat )
+	alias cat=vimcat
+fi
 
 function cd {
     builtin cd "$@" && ls
 }
 
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
