@@ -21,9 +21,13 @@ alias vi='nvim'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias halt='sudo /sbin/shutdown -h now'
+alias yolo='git push'
 export LESS='-R --use-color -Dd+r$Du+b'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 which fdfind &> /dev/null && alias fd='fdfind --type f' || alias fd='fd --type f'
+
+alias bb='brazil-build'
+alias bbr='brazil-build release'
 
 LAST_REPO=""
 cd() {
@@ -137,3 +141,4 @@ if [ -d "$HOME/.nvm" ]; then
 	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
+[ -d $HOME/.toolbox/bin ] && export PATH=$PATH:$HOME/.toolbox/bin
