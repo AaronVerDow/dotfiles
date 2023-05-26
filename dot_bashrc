@@ -142,3 +142,7 @@ if [ -d "$HOME/.nvm" ]; then
 	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 [ -d $HOME/.toolbox/bin ] && export PATH=$PATH:$HOME/.toolbox/bin
+[ -d ~/.rodar/bin ] && export PATH=~/.rodar/bin:$PATH
+
+[ -d "$HOME/.rbenv/bin" ] && export PATH="$HOME/.rbenv/bin:$PATH"
+which rbenv > /dev/null && eval "$(rbenv init -)" || true
