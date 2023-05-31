@@ -146,3 +146,4 @@ fi
 
 [ -d "$HOME/.rbenv/bin" ] && export PATH="$HOME/.rbenv/bin:$PATH"
 which rbenv > /dev/null && eval "$(rbenv init -)" || true
+[ -d "~/ws/envimprovment/src/EnvImprovementUbuntu/bin" ] && export PATH="~/ws/envimprovment/src/EnvImprovementUbuntu/bin:$PATH"
