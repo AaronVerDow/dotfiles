@@ -26,9 +26,6 @@ export LESS='-R --use-color -Dd+r$Du+b'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 which fdfind &> /dev/null && alias fd='fdfind --type f' || alias fd='fd --type f'
 
-alias bb='brazil-build'
-alias bbr='brazil-build release'
-
 LAST_REPO=""
 cd() {
     builtin cd "$@";
@@ -141,9 +138,6 @@ if [ -d "$HOME/.nvm" ]; then
 	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
-[ -d $HOME/.toolbox/bin ] && export PATH=$PATH:$HOME/.toolbox/bin
-[ -d ~/.rodar/bin ] && export PATH=~/.rodar/bin:$PATH
-
 [ -d "$HOME/.rbenv/bin" ] && export PATH="$HOME/.rbenv/bin:$PATH"
 which rbenv &> /dev/null && eval "$(rbenv init -)" || true
-[ -d "~/ws/envimprovment/src/EnvImprovementUbuntu/bin" ] && export PATH="~/ws/envimprovment/src/EnvImprovementUbuntu/bin:$PATH"
+[ -f "$HOME/.bashrc.work" ] && source "$HOME/.bashrc.work"
