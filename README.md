@@ -2,4 +2,5 @@
 My dotfiles
 
 # Todo
-* Add `SetEnv TERM=xterm` to .ssh/config?
+* Add `SetEnv TERM=xterm-256color` to .ssh/config?
+

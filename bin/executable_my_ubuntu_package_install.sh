@@ -8,10 +8,6 @@ bpytop
 cheese
 curl
 dnsutils
-docker-buildx-plugin
-docker-ce
-docker-ce-cli
-docker-compose-plugin
 falcon-sensor
 fd-find
 ffmpeg
@@ -29,7 +25,6 @@ net-tools
 nitrogen
 npm
 obs-studio
-onefetch
 openjdk-8-jre
 openssh-server
 packer

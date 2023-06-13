@@ -21,6 +21,7 @@ alias vi='nvim'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias halt='sudo /sbin/shutdown -h now'
+alias yolo='git push'
 export LESS='-R --use-color -Dd+r$Du+b'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 which fdfind &> /dev/null && alias fd='fdfind --type f' || alias fd='fd --type f'
@@ -132,6 +133,11 @@ function cd {
 
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if [ -d "$HOME/.nvm" ]; then
+	export NVM_DIR="$HOME/.nvm"
+	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
+[ -d "$HOME/.rbenv/bin" ] && export PATH="$HOME/.rbenv/bin:$PATH"
+which rbenv &> /dev/null && eval "$(rbenv init -)" || true
+[ -f "$HOME/.bashrc.work" ] && source "$HOME/.bashrc.work"
