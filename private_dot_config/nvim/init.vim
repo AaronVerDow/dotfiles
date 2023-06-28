@@ -12,11 +12,15 @@ Plug 'dense-analysis/ale'
 Plug 'iamcco/markdown-preview.nvim'
 Plug 'salkin-mada/openscad.nvim'
 Plug 'junegunn/fzf.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " Plug 'davidhalter/jedi-vim'
 
 " pip3 install pynvim black 
 Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'aklt/plantuml-syntax'
+
+" :CocInstall coc-pyright
 
 call plug#end()
 
