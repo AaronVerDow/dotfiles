@@ -597,7 +597,7 @@ beautiful.useless_gap = 5
 {{ if eq .chezmoi.osRelease.name "Arch Linux" }}
 awful.spawn.with_shell("pacwall -ug")
 {{ else }}
-awful.spawn.with_shell("nitrogen --random ~/Pictures/mah_wallpapers/ --set-zoom-fill")
+awful.spawn.with_shell("wallpaper.sh")
 awful.spawn.with_shell("work_startup.sh")
 -- Add head for multiple monitors
 -- awful.spawn.with_shell("nitrogen --random ~/Pictures/mah_wallpapers/ --set-zoom-fill --head=1")
