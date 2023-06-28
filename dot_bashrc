@@ -2,10 +2,12 @@
 # ~/.bashrc
 #
 
-# Managed by Ansible
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
+# workaround for NixOS
+[ -f /etc/bash.bashrc ] || source ~/.local/share/chezmoi/etc/bash.bashrc
+
 PATH="$HOME/bin:$PATH:$HOME/.local/bin"
 [ -d $HOME/.toolbox/bin ] && export PATH=$PATH:$HOME/.toolbox/bin
 
@@ -38,6 +40,8 @@ cd() {
         fi
     fi
 }
+
+export NIX_SHELL_PRESERVE_PROMPT=1
 
 export LESS_TERMCAP_mb=$'\E[01;31m' \
 LESS_TERMCAP_md=$'\E[01;38;5;74m' \
@@ -141,3 +145,4 @@ fi
 [ -d "$HOME/.rbenv/bin" ] && export PATH="$HOME/.rbenv/bin:$PATH"
 which rbenv &> /dev/null && eval "$(rbenv init -)" || true
 [ -f "$HOME/.bashrc.work" ] && source "$HOME/.bashrc.work"
+true
