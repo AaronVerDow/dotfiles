@@ -1,0 +1,9 @@
+swipe:
+  3:
+    left:
+      command: "xdotool key super+h" # next workspace
+    right:
+      command: "xdotool key super+l" # prev workspace
+    up:
+      command: "xdotool key super+f" # fullscreen
+
