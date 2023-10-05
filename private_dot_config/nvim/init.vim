@@ -21,6 +21,7 @@ Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'aklt/plantuml-syntax'
 
 " :CocInstall coc-pyright
+" :CocInstall coc-sql
 
 call plug#end()
 
