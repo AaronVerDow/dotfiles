@@ -126,6 +126,16 @@ alias .......='cd ../../../../../..'
 alias ........='cd ../../../../../../..'
 alias .........='cd ../../../../../../../..'
 
+alias ,,='echo "$OLDPWD" | grep -q "^$PWD/" && cd "$( echo "$OLDPWD" | sed "s#^$PWD##" | cut -d '/' -f -2 | sed 's#^/##' )"'
+alias ,,,='echo "$OLDPWD" | grep -q "^$PWD/" && cd "$( echo "$OLDPWD" | sed "s#^$PWD##" | cut -d '/' -f -3 | sed 's#^/##' )"'
+alias ,,,,='echo "$OLDPWD" | grep -q "^$PWD/" && cd "$( echo "$OLDPWD" | sed "s#^$PWD##" | cut -d '/' -f -4 | sed 's#^/##' )"'
+alias ,,,,,='echo "$OLDPWD" | grep -q "^$PWD/" && cd "$( echo "$OLDPWD" | sed "s#^$PWD##" | cut -d '/' -f -5 | sed 's#^/##' )"'
+alias ,,,,,,='echo "$OLDPWD" | grep -q "^$PWD/" && cd "$( echo "$OLDPWD" | sed "s#^$PWD##" | cut -d '/' -f -6 | sed 's#^/##' )"'
+alias ,,,,,,,='echo "$OLDPWD" | grep -q "^$PWD/" && cd "$( echo "$OLDPWD" | sed "s#^$PWD##" | cut -d '/' -f -7 | sed 's#^/##' )"'
+alias ,,,,,,,,='echo "$OLDPWD" | grep -q "^$PWD/" && cd "$( echo "$OLDPWD" | sed "s#^$PWD##" | cut -d '/' -f -8 | sed 's#^/##' )"'
+alias ,,,,,,,,,='echo "$OLDPWD" | grep -q "^$PWD/" && cd "$( echo "$OLDPWD" | sed "s#^$PWD##" | cut -d '/' -f -9 | sed 's#^/##' )"'
+alias ,,,,,,,,,,='echo "$OLDPWD" | grep -q "^$PWD/" && cd "$( echo "$OLDPWD" | sed "s#^$PWD##" | cut -d '/' -f -10 | sed 's#^/##' )"'
+
 if command -v vimcat &> /dev/null; then
 	alias ccat=$( which cat )
 	alias cat=vimcat
@@ -136,6 +146,8 @@ function cd {
 }
 
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+
+eval "$(direnv hook bash)"
 
 if [ -d "$HOME/.nvm" ]; then
 	export NVM_DIR="$HOME/.nvm"
