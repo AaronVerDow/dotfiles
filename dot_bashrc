@@ -19,7 +19,14 @@ PATH="$HOME/bin:$PATH:$HOME/.local/bin"
 export EDITOR=vim
 
 alias ip='ip -c'
-alias vi='nvim'
+vi() {
+    if [[ -d ${!#} ]]; then
+	echo "Use cd!"
+        cd "$@"
+    else
+        command nvim "$@"
+    fi
+}
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias halt='sudo /sbin/shutdown -h now'
