@@ -31,3 +31,5 @@ let g:shfmt_extra_args = '-i 4 -bn -ci -sr'
 
 let g:pymode_options_max_line_length=120
 :autocmd BufWritePost *.puml silent !plantuml_browser_preview.py <afile>
+
+set autoindent expandtab tabstop=4 shiftwidth=4
