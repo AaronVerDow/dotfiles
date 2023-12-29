@@ -33,6 +33,7 @@ alias halt='sudo /sbin/shutdown -h now'
 alias yolo='git push'
 export LESS='-R --use-color -Dd+r$Du+b'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias xclip='xclip -sel clip'
 which fdfind &> /dev/null && alias fd='fdfind --type f' || alias fd='fd --type f'
 
 LAST_REPO=""
@@ -147,6 +148,8 @@ if command -v vimcat &> /dev/null; then
 	alias ccat=$( which cat )
 	alias cat=vimcat
 fi
+
+alias sqlcat='nvimpager -c -- -c "set syntax=sql"'
 
 function cd {
     builtin cd "$@" && ls
