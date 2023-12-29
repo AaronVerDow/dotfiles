@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Lock Screen
+Exec=/home/ANT.AMAZON.COM/averdow/bin/lock
+Icon=system-lock-screen
+Terminal=false
