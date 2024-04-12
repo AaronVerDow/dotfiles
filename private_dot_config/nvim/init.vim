@@ -26,3 +26,9 @@ call plug#end()
 
 let g:pymode_options_max_line_length=120
 :autocmd BufWritePost *.puml silent !plantuml_browser_preview.py <afile>
+
+" Open preview windows on open
+au BufRead *.scad silent exec "!/home/averdow/bin/openscad-preview <afile> > /dev/null 2>&1 &"
+
+" Close preview windows when quitting
+au VimLeave *.scad silent exec "!/home/averdow/bin/openscad-preview --kill <afile> > /dev/null 2>&1 &"
