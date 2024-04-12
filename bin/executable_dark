@@ -1,0 +1,11 @@
+#!/bin/bash
+set -exo pipefail
+
+( 
+	cd .config/xsettingsd
+	ln -sf dark.conf xsettingsd.conf
+)
+
+killall -HUP xsettingsd
+
+kitty +kitten themes --reload-in all Default

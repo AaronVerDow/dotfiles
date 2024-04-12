@@ -19,13 +19,21 @@ PATH="$HOME/bin:$PATH:$HOME/.local/bin"
 export EDITOR=vim
 
 alias ip='ip -c'
-alias vi='nvim'
+vi() {
+    if [[ -d ${!#} ]]; then
+	echo "Use cd!"
+        cd "$@"
+    else
+        command nvim "$@"
+    fi
+}
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias halt='sudo /sbin/shutdown -h now'
 alias yolo='git push'
 export LESS='-R --use-color -Dd+r$Du+b'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias xclip='xclip -sel clip'
 which fdfind &> /dev/null && alias fd='fdfind --type f' || alias fd='fd --type f'
 
 LAST_REPO=""
@@ -126,16 +134,30 @@ alias .......='cd ../../../../../..'
 alias ........='cd ../../../../../../..'
 alias .........='cd ../../../../../../../..'
 
+alias ,,='echo "$OLDPWD" | grep -q "^$PWD/" && cd "$( echo "$OLDPWD" | sed "s#^$PWD##" | cut -d '/' -f -2 | sed 's#^/##' )"'
+alias ,,,='echo "$OLDPWD" | grep -q "^$PWD/" && cd "$( echo "$OLDPWD" | sed "s#^$PWD##" | cut -d '/' -f -3 | sed 's#^/##' )"'
+alias ,,,,='echo "$OLDPWD" | grep -q "^$PWD/" && cd "$( echo "$OLDPWD" | sed "s#^$PWD##" | cut -d '/' -f -4 | sed 's#^/##' )"'
+alias ,,,,,='echo "$OLDPWD" | grep -q "^$PWD/" && cd "$( echo "$OLDPWD" | sed "s#^$PWD##" | cut -d '/' -f -5 | sed 's#^/##' )"'
+alias ,,,,,,='echo "$OLDPWD" | grep -q "^$PWD/" && cd "$( echo "$OLDPWD" | sed "s#^$PWD##" | cut -d '/' -f -6 | sed 's#^/##' )"'
+alias ,,,,,,,='echo "$OLDPWD" | grep -q "^$PWD/" && cd "$( echo "$OLDPWD" | sed "s#^$PWD##" | cut -d '/' -f -7 | sed 's#^/##' )"'
+alias ,,,,,,,,='echo "$OLDPWD" | grep -q "^$PWD/" && cd "$( echo "$OLDPWD" | sed "s#^$PWD##" | cut -d '/' -f -8 | sed 's#^/##' )"'
+alias ,,,,,,,,,='echo "$OLDPWD" | grep -q "^$PWD/" && cd "$( echo "$OLDPWD" | sed "s#^$PWD##" | cut -d '/' -f -9 | sed 's#^/##' )"'
+alias ,,,,,,,,,,='echo "$OLDPWD" | grep -q "^$PWD/" && cd "$( echo "$OLDPWD" | sed "s#^$PWD##" | cut -d '/' -f -10 | sed 's#^/##' )"'
+
 if command -v vimcat &> /dev/null; then
 	alias ccat=$( which cat )
 	alias cat=vimcat
 fi
+
+alias sqlcat='nvimpager -c -- -c "set syntax=sql"'
 
 function cd {
     builtin cd "$@" && ls
 }
 
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+
+eval "$(direnv hook bash)"
 
 if [ -d "$HOME/.nvm" ]; then
 	export NVM_DIR="$HOME/.nvm"

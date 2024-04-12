@@ -1,0 +1,11 @@
+#!/bin/bash
+set -exo pipefail
+
+( 
+	cd .config/xsettingsd
+	ln -sf light.conf xsettingsd.conf
+)
+
+killall -HUP xsettingsd
+
+kitty +kitten themes --reload-in all Alabaster
