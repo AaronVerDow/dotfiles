@@ -14,6 +14,10 @@ Plug 'salkin-mada/openscad.nvim'
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
+Plug 'HiPhish/rainbow-delimiters.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'cuducos/yaml.nvim'
 
 " Plug 'davidhalter/jedi-vim'
 
@@ -39,3 +43,52 @@ au BufRead *.scad silent exec "!/home/averdow/bin/openscad-preview <afile> > /de
 au VimLeave *.scad silent exec "!/home/averdow/bin/openscad-preview --kill <afile> > /dev/null 2>&1 &"
 
 set autoindent expandtab tabstop=4 shiftwidth=4
+
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+    ensure_installed = {
+        "c",
+        "lua",
+        "vim", 
+        "python",
+        "bash",
+        "arduino",
+        "cmake",
+        "css",
+        "diff",
+        "dockerfile",
+        "git_config",
+        "git_rebase",
+        "gitattributes",
+        "gitcommit",
+        "gitignore",
+        "gnuplot",
+        "go",
+        "haskell",
+        "html",
+        "htmldjango",
+        "http",
+        "java",
+        "javascript",
+        "jq",
+        "json",
+        "markdown",
+        "nix",
+        "passwd",
+        "perl",
+        "php",
+        "pem",
+        "r",
+        "regex",
+        "ruby",
+        "rust",
+        "sql",
+        "ssh_config",
+        "typescript",
+        "yaml",
+    },
+    higlight = {
+        enable = true
+    }
+}
+EOF
