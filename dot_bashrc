@@ -24,9 +24,10 @@ vi() {
 	echo "Use cd!" | lolcat -a -d 24
         cd "$@"
     else
-        if chezmoi source-path "$@" &> /dev/null; then
+        path=$( readlink -f "$1" )
+        if chezmoi source-path "$path" &> /dev/null; then
             echo "Editing chezmoi file" | lolcat -a -d 24
-            chezmoi edit --apply "$@"
+            chezmoi edit --apply "$path"
         else
             command nvim "$@"
         fi
