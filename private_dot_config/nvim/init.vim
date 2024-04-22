@@ -48,6 +48,9 @@ au BufRead *.scad silent exec "!/home/averdow/bin/openscad-preview <afile> > /de
 " Close preview windows when quitting
 au VimLeave *.scad silent exec "!/home/averdow/bin/openscad-preview --kill <afile> > /dev/null 2>&1 &"
 
+" Press enter to autocomplete
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
 set autoindent expandtab tabstop=4 shiftwidth=4
 
 lua << EOF
