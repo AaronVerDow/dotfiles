@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Take Screenshot Selection
+Exec=scrot --select
+Icon=camera-photo
+Terminal=false

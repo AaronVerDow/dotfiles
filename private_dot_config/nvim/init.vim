@@ -28,6 +28,10 @@ Plug 'aklt/plantuml-syntax'
 " :CocInstall coc-pyright
 " :CocInstall coc-sql
 
+let g:ale_fixers = {'json': ['fixjson'],}
+
+let g:ale_fix_on_save = 1
+
 call plug#end()
 
 let g:shfmt_fmt_on_save = 1
@@ -35,6 +39,8 @@ let g:shfmt_extra_args = '-i 4 -bn -ci -sr'
 
 let g:pymode_options_max_line_length=120
 :autocmd BufWritePost *.puml silent !plantuml_browser_preview.py <afile>
+
+autocmd BufWritePre *.py silent! :call CocAction('runCommand', 'python.sortImports')
 
 " Open preview windows on open
 au BufRead *.scad silent exec "!/home/averdow/bin/openscad-preview <afile> > /dev/null 2>&1 &"

@@ -34,6 +34,7 @@ rofi
 screen
 scrot
 shellcheck
+shfmt
 sshfs
 tldr
 vagrant

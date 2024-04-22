@@ -238,9 +238,9 @@ globalkeys = gears.table.join(
    awful.key({ }, "XF86AudioMute", function ()
        awful.util.spawn("pactl set-sink-mute 0 toggle", false) end),
    awful.key({ }, "Print", function ()
-       awful.util.spawn_with_shell("scrot ~/pics/screenshots/%s.png", false) end),
+       awful.util.spawn_with_shell("scrot ~/Pictures/screenshots/%s.png", false) end),
    awful.key({"Shift", }, "Print", function ()
-       awful.util.spawn_with_shell("scrot --select ~/pics/screenshots/%s.png", false) end),
+       awful.util.spawn_with_shell("scrot --select ~/Pictures/screenshots/%s.png", false) end),
     awful.key({ "Mod1",           }, "Tab",
         function ()
             awful.client.focus.byidx( 1)
