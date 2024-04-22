@@ -3,7 +3,7 @@
 " :PlugUpdate
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'python-mode/python-mode'
+" Plug 'python-mode/python-mode'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'jvirtanen/vim-hcl'
@@ -37,7 +37,7 @@ call plug#end()
 let g:shfmt_fmt_on_save = 1
 let g:shfmt_extra_args = '-i 4 -bn -ci -sr'
 
-let g:pymode_options_max_line_length=120
+" let g:pymode_options_max_line_length=120
 :autocmd BufWritePost *.puml silent !plantuml_browser_preview.py <afile>
 
 autocmd BufWritePre *.py silent! :call CocAction('runCommand', 'python.sortImports')
