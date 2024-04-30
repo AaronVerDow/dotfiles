@@ -7,6 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
+    # if this is in chezmoi repo a symlink must be created back to /etc/nixos
       ./hardware-configuration.nix
     ];
 
@@ -18,6 +19,11 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   virtualisation.docker.enable = true;
+
+  nix.settings.auto-optimise-store = true;
+  nix.gc.automatic = true;
+  nix.gc.dates = "daily";
+  nix.gc.options = "--delete-older-than +5";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
