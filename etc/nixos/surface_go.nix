@@ -108,6 +108,7 @@
 	libreoffice
 	gimp
 	acpi
+    xclip
     ];
   };
 
@@ -120,6 +121,7 @@
     vim
     neovim
     vimpager
+    gcc
     btop
     direnv
     lolcat
